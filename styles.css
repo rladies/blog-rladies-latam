@@ -1,0 +1,31 @@
+.radix-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #88398A;
+    font-size: 20px;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+  d-title{
+    background-image: url('img/logo.png');
+    background-repeat: no-repeat;
+    background-position: 95% 70%;
+    background-size: initial;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  d-title{
+    background-image: url('img/logo.png');
+    background-repeat: no-repeat;
+    background-position: 63% 70%;
+    background-size: initial;
+  }
+}
+
+
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}

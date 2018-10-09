@@ -1,0 +1,10 @@
+Algumas instruções para usar o radix:
+- Começando:
+    - 1. Instalar o pacote radix com devtools::install_github("rstudio/radix")
+    - 2. Instalar o rstudio na veras mais nova possível
+
+- Abrir a projeto do site (R-Ladies Latam.Rproj)
+- Editando as seções já existentes:
+    - O arquivo “about.Rmd” é aonde escrevemos o conteúdo da pagina “Sobre”. É um rmarkdown normal.
+    - Os novos posts ficam na pasta “posts” e devem ter o formato do exemplo que esta la. Um novo post tambem pode ser criado com  radix::create_post()
+- Para gerar novamente o site, basta rodar no console rmarkdown::render_site() e depois checar o arquivo index.html

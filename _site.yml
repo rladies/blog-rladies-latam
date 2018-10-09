@@ -1,0 +1,25 @@
+name: "R-Ladies Latam"
+title: "R-Ladies Latam"
+description: |
+  R-Ladies Latam
+output_dir: "docs"
+collections:
+  posts:
+    share: [twitter, linkedin]
+navbar:
+  logo:
+    image: img/logo.png
+    href: https://rladies.org/
+  right:
+    - text: "Posts"
+      menu:
+        - text: "Tutoriais"
+          href: tutoriais.html
+        - text: "Análises"
+          href: analises.html
+    - text: "Sobre"
+      href: about.html
+output:
+  radix::radix_article:
+    css: styles.css
+

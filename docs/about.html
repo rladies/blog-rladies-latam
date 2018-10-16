@@ -19,29 +19,26 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>R-Ladies Latam: About this blog</title>
+  <title>R-Ladies Latam: Sobre o blog!</title>
   
-  <meta property="description" itemprop="description" content="Some additional details about the blog"/>
   
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="R-Ladies Latam: About this blog"/>
+  <meta property="og:title" content="R-Ladies Latam: Sobre o blog!"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the blog"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="R-Ladies Latam"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="R-Ladies Latam: About this blog"/>
-  <meta property="twitter:description" content="Some additional details about the blog"/>
+  <meta property="twitter:title" content="R-Ladies Latam: Sobre o blog!"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this blog"]},{"type":"character","attributes":{},"value":["Some additional details about the blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Sobre o blog!"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -254,12 +251,22 @@
     display: block;
   }
   
-  .nav-dropdown-content a {
+  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
     color: black;
     padding: 6px 24px;
     text-decoration: none;
     display: block;
     text-align: left;
+  }
+  
+  .nav-dropdown-content .nav-dropdown-header {
+    display: block;
+    padding: 5px 24px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #999999;
+    white-space: nowrap;
   }
   
   .nav-dropdown:hover .nav-dropbtn {
@@ -386,6 +393,10 @@
     width: 100%;
   }
   
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
   .pandoc-table th:not([align]) {
     text-align: left;
   }
@@ -400,6 +411,10 @@
   
   .l-screen-inset {
     padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
   }
   
   .shaded {
@@ -921,9 +936,9 @@
       var fn = $('#' + id);
       var fn_p = $('#' + id + '>p');
       fn_p.find('.footnote-back').remove();
-      var text = fn_p.text();
+      var text = fn_p.html();
       var dtfn = $('<d-footnote></d-footnote>');
-      dtfn.text(text);
+      dtfn.html(text);
       $(this).replaceWith(dtfn);
     });
     // remove footnotes
@@ -949,7 +964,10 @@
       var clz = "";
       var language = pre.attr('class');
       if (language) {
-        if ($.inArray(language, ["r", "cpp", "c", "java"]) != -1)
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
           language = "clike";
         language = ' language="' + language + '"';
         var dt_code = $('<d-code block' + language + clz + '></d-code>');
@@ -1164,9 +1182,19 @@
     // prevent underline for linked images
     $('a > img').parent().css({'border-bottom' : 'none'});
   
-    // mark figures created by knitr chunks as 100% width
+    // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
-      $(this).find('img, .html-widget').css('width', '100%');
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
     });
   
     // auto-append index.html to post-preview links in file: protocol
@@ -1178,7 +1206,7 @@
   
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
-      $('.radix-site-header a').each(function(i,val) {
+      $('.radix-site-header a[href]').each(function(i,val) {
         $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
@@ -1187,6 +1215,8 @@
     $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
     $('.kable-table').children('table').addClass('pandoc-table');
   
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
   
     // initialize posts list
     if (window.init_posts_list)
@@ -1198,6 +1228,7 @@
       $('#disqus_thread').toggleClass('hidden');
       if (!$('#disqus_thread').hasClass('hidden')) {
         var offset = $(this).offset();
+        $(window).resize();
         $('html, body').animate({
           scrollTop: offset.top - 35
         });
@@ -1228,31 +1259,6 @@
     font-weight: 300;
   }
   
-  @media only screen and (max-width: 600px) {
-    d-title{
-      background-image: url('img/logo.png');
-      background-repeat: no-repeat;
-      background-position: 95% 70%;
-      background-size: initial;
-    }
-  }
-  
-  @media only screen and (min-width: 600px) {
-    d-title{
-      background-image: url('img/logo.png');
-      background-repeat: no-repeat;
-      background-position: 63% 70%;
-      background-size: initial;
-    }
-  }
-  
-  
-  img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
   </style>
   <!--/radix_placeholder_site_in_header-->
 
@@ -1265,7 +1271,7 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this blog","description":"Some additional details about the blog","authors":[]}
+{"title":"Sobre o blog!","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1300,13 +1306,20 @@ Posts
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this blog</h1>
-<p>Some additional details about the blog</p>
+<h1>Sobre o blog!</h1>
+
 </div>
 
 
 <div class="d-article">
-
+<p>R-Ladies é uma organização que promove a diversidade de gênero na comunidade da linguagem R. O principal objetivo do R-Ladies é promover a linguagem computacional estatística R compartilhando conhecimento. Na América Latina, atualmente existem 18 capítulos do R-Ladies.</p>
+<p><a href=”https://www.meetup.com/pro/rladies/” target=”_blank”> No site do Meetup</a> é possível consultar em quais cidades já existem capítulos do R-Ladies. O blog foi criado com o propósito de centralizar e divulgar os conteúdos elaborados e disponibilizados pelas R-Ladies dos diferentes capítulos da América Latina.</p>
+<p>Considerando que a grande parte dos conteúdos online sobre R estão disponíveis em inglês, o blog R-Ladies Latin America (LaTam) tem como objetivo publicar e promover o acesso à conteúdos relacionados à linguagem R nos idiomas falados aqui: Português e Espanhol.</p>
+<p>Para contribuir com postagens no blog, é necessário realizar um <code>fork</code> no repositório no github, realizar as alterações e então solicitar um <code>pull request</code>. O repositório do blog está disponível em: <a href="https://github.com/rladies/blog-rladies-latam" class="uri">https://github.com/rladies/blog-rladies-latam</a></p>
+<p><b></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/logo.png" width="20%" height="20%" style="display: block; margin: auto;" /></p>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

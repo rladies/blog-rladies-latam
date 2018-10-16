@@ -1,9 +1,29 @@
 ---
-title: "About this blog"
-description: |
-  Some additional details about the blog
+title: "Sobre o blog!"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+
+R-Ladies é uma organização que promove a diversidade de gênero na comunidade da linguagem R. O principal objetivo do R-Ladies é promover a linguagem computacional estatística R compartilhando conhecimento. 
+Na América Latina, atualmente existem 18 capítulos do R-Ladies. 
+
+
+<a href=”https://www.meetup.com/pro/rladies/” target=”_blank”>
+No site do Meetup</a> é possível consultar em quais cidades já existem capítulos do R-Ladies.  O blog foi criado com o propósito de centralizar e divulgar os conteúdos elaborados e disponibilizados pelas R-Ladies dos diferentes capítulos da América Latina.
+
+
+Considerando que a grande parte dos conteúdos online sobre R estão disponíveis em inglês, o blog R-Ladies Latin America (LaTam) tem como objetivo publicar e promover o acesso à conteúdos relacionados à linguagem R nos idiomas falados aqui: Português e Espanhol.
+
+
+Para contribuir com postagens no blog, é necessário realizar 
+um `fork` no repositório no github, realizar as alterações e então solicitar um `pull request`. O repositório do blog está disponível em: https://github.com/rladies/blog-rladies-latam
+
+<b>
+
+```{r, fig.align='center', out.width="20%", out.height="20%"}
+knitr::include_graphics("img/logo.png")
+```
+

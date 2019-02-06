@@ -1,0 +1,290 @@
+---
+title: "Primeiras impressões sobre os dados no R"
+author:
+  - name: "Bruna Wundervald"
+    url: https://brunaw.com
+    affiliation: Maynooth University
+    affiliation_url: https://www.maynoothuniversity.ie/
+date: 10-16-2018
+output:
+  radix::radix_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Quando utilizamos dados reais, é muito comum que eles contenham os mais
+diversos tipos de erro/anormalidades: de digitação, erros gerados 
+por problemas em algum sistema ou até mesmo falta de cuidado 
+por parte de quem os coleta. A falta de padronização e presença de 
+observações que não representam o cenário estudado é algo que precisa
+ser sempre avaliado e corrigido. Neste post, eu vou dar uma ideia basica 
+sobre como lidar com tudo isso no `R`. A partir daqui, considere que 
+estamos trabalhando com dados no formato `data.frame`. 
+
+# Materiais e métodos usados  
+
+- O pacote tidyverse: 
+
+>  Coleção de pacotes para ciência de dados, que compartilham
+a mesma filosofia, gramática e estruturas de dados. 
+
+```{r, echo = FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("img/tidy_workflow.png")
+```
+
+- Pipe! `%>%`: aplica a função que está à direita aos 
+dados que estão à esquerda - como um cano. 
+
+- "Notação":
+  - Os `::` evidenciam quando uma função é proveniente de
+  um pacote específico.
+
+
+# Primeiras impressões sobre os dados
+
+Antes de qualquer limpeza, precisamos inspecionar os dados.
+Para isso, eu considero que precisamos inspecionar três coisas: 
+o cabeçalho, a estrutura e resumo estatístico dos dados.
+
+  - Cabeçalho: entender como estão os dados - em que 
+ordem, quais são os nomes das colunas, etc.
+  - Estrutura: entender quais são os tipos das colunas, 
+  permitindo a identificação de erros de leitura, por exemplo.
+  - Resumo estatístico: avaliar a distribuição de 
+  cada coluna, permitindo a identificação inicial de 
+  outliers, por exemplo. 
+ 
+Para a realização destas tarefas, as funções mais utilizadas são: 
+
+  - `head`/`tail`: primeiras e últimas linhas dos dados
+  - `dplyr::glimpse`: mostra uma combinação de 
+  estrutura e primeiras linhas dos dados
+  - `summary`: mostra o resumo dos dados
+  - `table`: cria a tabela de freqência de uma variável
+  - `dim`: mostra a dimensão dos dados
+  
+Agora, vamos explorar cada uma delas, começando por simular alguns
+dados de exemplo: 
+
+```{r}
+library(tidyverse)
+# Simulando dados ----------------------------------------------------
+set.seed(2018)  # reprodutibilidade
+sexo <- c("Fem", "Masc")
+renda <- round(c(seq(from = 1, to = 100, by = abs(rnorm(n = 1)))*100,
+           seq(from = 90, to = 100, by = abs(rnorm(n = 1)))*1000), 2)
+cidade <- c("osasco", "campinas", "sao paulo", "s. paulo", "Sao paulo", "São Paulo")
+
+
+dados <- data.frame(renda = renda, 
+                    # Aleatorizando as observações de sexo e cidade
+                    sexo = sample(sexo, size = length(renda), 
+                                  replace = TRUE),
+                    cidade = sample(cidade, size = length(renda), 
+                                  replace = TRUE)) %>% 
+  dplyr::mutate(
+    classe = # Classificando a classe de acordo com as rendas 
+      dplyr::case_when(
+        dplyr:: between(renda, 0, quantile(renda, 0.25)) ~ "D",
+        dplyr::between(renda, quantile(renda, 0.25), quantile(renda, 0.50)) ~ "C",
+        dplyr::between(renda, quantile(renda, 0.50), quantile(renda, 0.75)) ~ "B",
+        dplyr::between(renda, quantile(renda, 0.75), quantile(renda, 1)) ~ "A")) %>%
+  dplyr::slice(sample(1:n()))  # "Desordenando" os dados
+
+```
+
+Suponha então que temos os seguintes dados: o sexo, renda, classe social
+(definida a partir da renda) de pessoas da cidade do estado São Paulo. As 
+primeiras e útlimas observações dos dados são: 
+
+```{r, eval = FALSE}
+dados %>% head()
+```
+
+
+```{r, echo = FALSE}
+dados %>% head() %>% knitr::kable(caption = "Primeiras
+                                  linhas dos dados")
+```
+
+E as últimas:
+
+```{r, eval = FALSE}
+dados %>% tail()
+```
+
+```{r, echo = FALSE}
+dados %>% tail() %>% knitr::kable(caption = "Últimas
+                                  linhas dos dados")
+```
+
+Agora sabemos como os dados estão organizados. Mas qual é a 
+estrutura deles? Podemos descobrir isso com `glimpse`. 
+
+```{r}
+dados %>% dplyr::glimpse()
+```
+
+Temos então um total de 237 linhas e 4 colunas. Além disso,
+sabemos quais são os tipos das colunas: `double/numeric`,
+`factor` e `character`.  Lembrando que o tipo `factor` é ideal para quando
+temos variáveis de classes, podemos notar que a coluna "classe" 
+deve ser alterada, deixando de ser um `character`, uma vez que não 
+queremos tratá-la como texto: 
+
+```{r}
+dados <- dados %>% 
+  dplyr::mutate_if(is.character, funs(as.factor))
+
+dados %>% dplyr::glimpse()
+```
+
+Note que usamos a função `mutate_if`, que transforma uma variável 
+caso ela cumpra um certo requisito. Ou seja, o que fizemos foi: `se`
+a variável é `character`, transforme em `factor`. Esta função aplica é 
+aplicada a todas as colunas dos dados, o que pode ser muito útil quando
+temos várias colunas para transformar. 
+
+A função `summary` mostra o resumo estatístico dos dados: 
+```{r}
+dados %>% summary()
+```
+
+
+*Bônus: a função `skim` do pacote `skimr` tambeeém apresenta um 
+resumo dos dados com adição d ehistogramas para o caso de 
+variáveis contínuas :) 
+
+A variável renda apresenta um comportamento estranho: seu máximo 
+está muito longe da média, mediana e até do terceiro quartil. Esse
+comportamento definitivamente exige uma atencão extra, que será
+discutida na parte sobre a remoção de outliers. 
+
+
+# Inspeção através de gráficos
+
+Suponha que antes de tudo você precisa verificar algumas hipóteses, como:
+
+  - A distribuição de renda de homens e mulheres na amostra é igual? 
+  - A distribuição de renda por classes  na amostra é diferente? 
+
+Estas verificações podem ser facilmente realizadas através de 
+inspeção gráfica: 
+
+```{r, fig.align='center'}
+dados %>% 
+  ggplot(aes(renda)) +
+  geom_histogram(fill = '#88398A', colour = 'grey80',
+                 bins = 30) +
+  facet_wrap(~sexo, scales = 'free') +
+  theme_bw() +
+  labs(x = 'Renda', y = 'Contagem de pessoas', 
+       main = 'Distribuição da renda por homens e mulheres')
+```
+
+```{r}
+dados %>% 
+  ggplot(aes(renda)) +
+  geom_histogram(fill = '#88398A', colour = 'grey80',
+                 bins = 20) +
+  facet_wrap(~classe) +
+  theme_bw() +
+  labs(x = 'Renda', y = 'Contagem de pessoas', 
+       main = 'Distribuição da renda por classes')
+```
+
+A primeira vista as duas hipóteses parecem proceder: homens e
+mulheres têm a distribuição bem parecidas. As diferenças entre as rendas
+ficam muito claras quando separamos os graaaáficos pelas classes, o que
+justificaria a presença dos *outliers*. 
+
+
+# Outliers - valores que não representam a amostra
+
+## Identificação
+
+Para a identificação de outliers, uma função muito útil é a 
+`quantile`, que mostra cada quantil de uma variável. Assim, 
+podemos utilizá-la para encontrar exatamente "aonde" começam 
+os *outliers*:
+
+```{r}
+# Vendo os quantis mais "comuns"
+dados %>% with(quantile(renda))
+
+# Vendo os quantis específicos
+dados %>% with(quantile(renda, seq(0.9, 1, by = 0.005)))
+```
+
+Percebe-se que existe uma mudança brusca nos valores dos quantis 
+finais, aonde o valor é quase 10 vezes maior que o anterior. Assim, 
+encontramos um ponto ideal para começar o corte destes valores 
+extremos. 
+
+## Remoção
+
+A remoção de outliers é feita com o `filter`, de forma muito 
+rápida e intuitiva:
+
+```{r}
+dados  <- dados %>% 
+  dplyr::filter(renda < quantile(renda, 0.97))
+```
+
+
+# Erros em `strings`
+
+Na maior parte das vezes, não há um algoritmo automático que resolva 
+nossos problemas com as `strings`: é preciso corrigi-las à mão. Todavia, 
+devemos lembrar que estes erros surgem por meio de fatores externos, 
+como a digitação incorreta, erros em sistemas, e assim por diante. É
+sempre bom estar atento às possibilidades de aplicar medidas que ajudem 
+a evitar a existência dos erros. 
+
+Um pouco mais sobre `strings` pode ser encontrado [nesse repositório da Ana](https://github.com/analuspi/MeetUp-Strings). Aqui, o que eu vou
+fazer são operações simples para buscar padronizar a coluna
+de texto de interesse, que é a cidade.
+
+Primeiro, vamos verificar como estão os textos e pensar numa 
+boa forma de corrígi-los: 
+
+```{r}
+dados %>% distinct(cidade)
+```
+
+Ou seja, as cidades Campinas e Osasco estão escritas de forma
+correta, mas São Paulo tem várias versões. Um bom critério para
+corrigir é usar a palavra "paulo" que é comum em todas estas 
+versões: 
+
+```{r}
+# Passo 1: passando tudo para minúsculo (lower case)
+dados <- dados %>%
+  mutate(cidade = str_to_lower(cidade))
+
+# Passo 2: substituindo os textos de acordo com um critério:
+# se o texto contém "paulo", substituir tudo por "são paulo" 
+# e deixando somente as primeiras letras maiúsculas
+
+dados <- dados %>%
+  mutate(cidade = ifelse(str_detect(cidade, "paulo"), "são paulo", cidade)) %>% 
+  mutate(cidade = str_to_title(cidade))
+
+dados %>% distinct(cidade)
+```
+
+Agora temos os nomes das cidades corrigidos. Essa solução não é geral, 
+cada caso será algo diferente, mas ajuda a ter uma ideia sobre
+como proceder. Uma outra opção é usar a função `case_when` para 
+substituir casos mais especifícos.
+
+Por enquanto é isso :) logo teremos mais assuntos sendo discutidos aqui
+nesse blog!
+
+
+

@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "path": "posts/2018-10-16-inspecao-dados/",
+    "title": "Primeiras impressões sobre os dados no R",
+    "description": {},
+    "author": [
+      {
+        "name": "Bruna Wundervald",
+        "url": "https://brunaw.com"
+      }
+    ],
+    "date": "2018-10-16",
+    "categories": [],
+    "preview": "posts/2018-10-16-inspecao-dados/img/tidy_workflow.png",
+    "last_modified": "2019-02-06T17:21:39+00:00",
+    "preview_width": 1437,
+    "preview_height": 1050
+  }
+]

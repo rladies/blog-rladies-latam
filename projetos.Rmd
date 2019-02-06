@@ -1,0 +1,14 @@
+---
+title: "Projetos"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Aqui listamos os projetos, eventos, minicursos e todo
+outro tipo de atividades das quais participamos. 
+
+# Atuais
+
+# Terminados

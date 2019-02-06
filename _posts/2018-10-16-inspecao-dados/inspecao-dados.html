@@ -19,366 +19,36 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>R-Ladies Latam: Sobre o blog!</title>
+  <title>Primeiras impressões sobre os dados no R</title>
   
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2018-10-16"/>
+  <meta property="article:created" itemprop="dateCreated" content="2018-10-16"/>
+  <meta name="article:author" content="Bruna Wundervald"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="R-Ladies Latam: Sobre o blog!"/>
+  <meta property="og:title" content="Primeiras impressões sobre os dados no R"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="R-Ladies Latam"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="R-Ladies Latam: Sobre o blog!"/>
+  <meta property="twitter:title" content="Primeiras impressões sobre os dados no R"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Sobre o blog!"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Primeiras impressões sobre os dados no R"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Bruna Wundervald"]},{"type":"character","attributes":{},"value":["https://brunaw.com"]},{"type":"character","attributes":{},"value":["Maynooth University"]},{"type":"character","attributes":{},"value":["https://www.maynoothuniversity.ie/"]}]}]},{"type":"character","attributes":{},"value":["10-16-2018"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["radix::radix_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.radix-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["img/dplyr.png","img/joins.png","img/pipe.png","img/tidy_workflow.png","inspecao-dados_files/bowser-1.9.3/bowser.min.js","inspecao-dados_files/distill-2.2.21/template.v2.js","inspecao-dados_files/figure-html5/unnamed-chunk-10-1.png","inspecao-dados_files/figure-html5/unnamed-chunk-10-2.png","inspecao-dados_files/figure-html5/unnamed-chunk-11-1.png","inspecao-dados_files/figure-html5/unnamed-chunk-12-1.png","inspecao-dados_files/figure-html5/unnamed-chunk-8-1.png","inspecao-dados_files/figure-html5/unnamed-chunk-9-1.png","inspecao-dados_files/jquery-1.11.3/jquery.min.js","inspecao-dados_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .radix-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .radix-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .radix-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .radix-site-nav {
-      display: none;
-    }
-  }
-  
-  .radix-site-header {
-  
-  }
-  
-  .radix-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .radix-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .radix-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .radix-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .radix-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .radix-site-header a,
-  .radix-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .radix-site-header .title {
-    font-size: 18px;
-  }
-  
-  .radix-site-header .logo {
-    padding: 0;
-  }
-  
-  .radix-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .radix-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .radix-site-header .logo img {
-      display: inline-block;
-    }
-    .radix-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .radix-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .radix-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .radix-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .radix-site-header a, .radix-site-header .nav-dropdown  {display: none;}
-    .radix-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .radix-site-header .title {
-      margin-left: 0;
-    }
-    .radix-site-header .nav-right {
-      margin-right: 0;
-    }
-    .radix-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .radix-site-header.responsive {position: relative;}
-    .radix-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .radix-site-header.responsive a,
-    .radix-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .radix-site-header.responsive .nav-left,
-    .radix-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .radix-site-header.responsive .nav-dropdown {float: none;}
-    .radix-site-header.responsive .nav-dropdown-content {position: relative;}
-    .radix-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .radix-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1254,23 +924,13 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="inspecao-dados_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="inspecao-dados_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="inspecao-dados_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="inspecao-dados_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <style type="text/css">
-  .radix-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #88398A;
-      font-size: 20px;
-    font-weight: 300;
-  }
-  
-  </style>
   <!--/radix_placeholder_site_in_header-->
 
-  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
@@ -1279,56 +939,350 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Sobre o blog!","authors":[]}
+{"title":"Primeiras impressões sobre os dados no R","authors":[{"author":"Bruna Wundervald","authorURL":"https://brunaw.com","affiliation":"Maynooth University","affiliationURL":"https://www.maynoothuniversity.ie/"}],"publishedDate":"2018-10-16T00:00:00.000+01:00","citationText":"Wundervald, 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="radix-site-nav radix-site-header">
-<div class="nav-left">
-<a class="logo" href="https://rladies.org/">
-<img src="img/logo.png"/>
-</a>
-<a href="index.html" class="title">R-Ladies Latam</a>
-</div>
-<div class="nav-right">
-<div class="nav-dropdown">
-<button class="nav-dropbtn">
-Posts
- 
-<span class="down-arrow">&#x25BE;</span>
-</button>
-<div class="nav-dropdown-content">
-<a href="index.html">Tutoriais</a>
-<a href="analises.html">Análises</a>
-</div>
-</div>
-<a href="about.html">Sobre</a>
-<a href="projetos.html">Projetos</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Sobre o blog!</h1>
+<h1>Primeiras impressões sobre os dados no R</h1>
 
 </div>
 
+<div class="d-byline">
+  Bruna Wundervald <a href="https://brunaw.com" class="uri">https://brunaw.com</a> (Maynooth University)<a href="https://www.maynoothuniversity.ie/" class="uri">https://www.maynoothuniversity.ie/</a>
+  
+<br/>10-16-2018
+</div>
 
 <div class="d-article">
-<p>R-Ladies é uma organização que promove a diversidade de gênero na comunidade da linguagem R. O principal objetivo do R-Ladies é promover a linguagem computacional estatística R compartilhando conhecimento. Na América Latina, atualmente existem 18 capítulos do R-Ladies.</p>
-<p><a href=”https://www.meetup.com/pro/rladies/” target=”_blank”> No site do Meetup</a> é possível consultar em quais cidades já existem capítulos do R-Ladies. O blog foi criado com o propósito de centralizar e divulgar os conteúdos elaborados e disponibilizados pelas R-Ladies dos diferentes capítulos da América Latina.</p>
-<p>Considerando que a grande parte dos conteúdos online sobre R estão disponíveis em inglês, o blog R-Ladies Latin America (LaTam) tem como objetivo publicar e promover o acesso à conteúdos relacionados à linguagem R nos idiomas falados aqui: Português e Espanhol.</p>
-<p>Para contribuir com postagens no blog, é necessário realizar um <code>fork</code> no repositório no github, realizar as alterações e então solicitar um <code>pull request</code>. O repositório do blog está disponível em: <a href="https://github.com/rladies/blog-rladies-latam" class="uri">https://github.com/rladies/blog-rladies-latam</a></p>
-<p><b></p>
+<p>Quando utilizamos dados reais, é muito comum que eles contenham os mais diversos tipos de erro/anormalidades: de digitação, erros gerados por problemas em algum sistema ou até mesmo falta de cuidado por parte de quem os coleta. A falta de padronização e presença de observações que não representam o cenário estudado é algo que precisa ser sempre avaliado e corrigido. Neste post, eu vou dar uma ideia basica sobre como lidar com tudo isso no <code>R</code>. A partir daqui, considere que estamos trabalhando com dados no formato <code>data.frame</code>.</p>
+<h1 id="materiais-e-metodos-usados">Materiais e métodos usados</h1>
+<ul>
+<li>O pacote tidyverse:</li>
+</ul>
+<blockquote>
+<p>Coleção de pacotes para ciência de dados, que compartilham a mesma filosofia, gramática e estruturas de dados.</p>
+</blockquote>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="img/logo.png" width="20%" height="20%" style="display: block; margin: auto;" /></p>
+<p><img src="img/tidy_workflow.png" width="75%" style="display: block; margin: auto;" /></p>
 </div>
+<ul>
+<li><p>Pipe! <code>%&gt;%</code>: aplica a função que está à direita aos dados que estão à esquerda - como um cano.</p></li>
+<li>“Notação”:
+<ul>
+<li>Os <code>::</code> evidenciam quando uma função é proveniente de um pacote específico.</li>
+</ul></li>
+</ul>
+<h1 id="primeiras-impressoes-sobre-os-dados">Primeiras impressões sobre os dados</h1>
+<p>Antes de qualquer limpeza, precisamos inspecionar os dados. Para isso, eu considero que precisamos inspecionar três coisas: o cabeçalho, a estrutura e resumo estatístico dos dados.</p>
+<ul>
+<li>Cabeçalho: entender como estão os dados - em que ordem, quais são os nomes das colunas, etc.</li>
+<li>Estrutura: entender quais são os tipos das colunas, permitindo a identificação de erros de leitura, por exemplo.</li>
+<li>Resumo estatístico: avaliar a distribuição de cada coluna, permitindo a identificação inicial de outliers, por exemplo.</li>
+</ul>
+<p>Para a realização destas tarefas, as funções mais utilizadas são:</p>
+<ul>
+<li><code>head</code>/<code>tail</code>: primeiras e últimas linhas dos dados</li>
+<li><code>dplyr::glimpse</code>: mostra uma combinação de estrutura e primeiras linhas dos dados</li>
+<li><code>summary</code>: mostra o resumo dos dados</li>
+<li><code>table</code>: cria a tabela de freqência de uma variável</li>
+<li><code>dim</code>: mostra a dimensão dos dados</li>
+</ul>
+<p>Agora, vamos explorar cada uma delas, começando por simular alguns dados de exemplo:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(tidyverse)
+# Simulando dados ----------------------------------------------------
+set.seed(2018)  # reprodutibilidade
+sexo &lt;- c(&quot;Fem&quot;, &quot;Masc&quot;)
+renda &lt;- round(c(seq(from = 1, to = 100, by = abs(rnorm(n = 1)))*100,
+           seq(from = 90, to = 100, by = abs(rnorm(n = 1)))*1000), 2)
+cidade &lt;- c(&quot;osasco&quot;, &quot;campinas&quot;, &quot;sao paulo&quot;, &quot;s. paulo&quot;, &quot;Sao paulo&quot;, &quot;São Paulo&quot;)
+
+
+dados &lt;- data.frame(renda = renda, 
+                    # Aleatorizando as observações de sexo e cidade
+                    sexo = sample(sexo, size = length(renda), 
+                                  replace = TRUE),
+                    cidade = sample(cidade, size = length(renda), 
+                                  replace = TRUE)) %&gt;% 
+  dplyr::mutate(
+    classe = # Classificando a classe de acordo com as rendas 
+      dplyr::case_when(
+        dplyr:: between(renda, 0, quantile(renda, 0.25)) ~ &quot;D&quot;,
+        dplyr::between(renda, quantile(renda, 0.25), quantile(renda, 0.50)) ~ &quot;C&quot;,
+        dplyr::between(renda, quantile(renda, 0.50), quantile(renda, 0.75)) ~ &quot;B&quot;,
+        dplyr::between(renda, quantile(renda, 0.75), quantile(renda, 1)) ~ &quot;A&quot;)) %&gt;%
+  dplyr::slice(sample(1:n()))  # &quot;Desordenando&quot; os dados</code></pre>
+</div>
+<p>Suponha então que temos os seguintes dados: o sexo, renda, classe social (definida a partir da renda) de pessoas da cidade do estado São Paulo. As primeiras e útlimas observações dos dados são:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% head()</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:unnamed-chunk-4">Table 1: </span>Primeiras linhas dos dados</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">renda</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">cidade</th>
+<th style="text-align: left;">classe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5387.30</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">Sao paulo</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6783.15</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">São Paulo</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">607.58</td>
+<td style="text-align: left;">Fem</td>
+<td style="text-align: left;">sao paulo</td>
+<td style="text-align: left;">D</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8855.77</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">sao paulo</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9913.23</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">campinas</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6656.25</td>
+<td style="text-align: left;">Fem</td>
+<td style="text-align: left;">Sao paulo</td>
+<td style="text-align: left;">B</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>E as últimas:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% tail()</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:unnamed-chunk-6">Table 2: </span>Últimas linhas dos dados</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">renda</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: left;">cidade</th>
+<th style="text-align: left;">classe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>237</td>
+<td style="text-align: right;">4287.54</td>
+<td style="text-align: left;">Fem</td>
+<td style="text-align: left;">osasco</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="even">
+<td>238</td>
+<td style="text-align: right;">2214.92</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">São Paulo</td>
+<td style="text-align: left;">D</td>
+</tr>
+<tr class="odd">
+<td>239</td>
+<td style="text-align: right;">9997.83</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">osasco</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td>240</td>
+<td style="text-align: right;">3230.08</td>
+<td style="text-align: left;">Fem</td>
+<td style="text-align: left;">campinas</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="odd">
+<td>241</td>
+<td style="text-align: right;">3441.57</td>
+<td style="text-align: left;">Fem</td>
+<td style="text-align: left;">campinas</td>
+<td style="text-align: left;">C</td>
+</tr>
+<tr class="even">
+<td>242</td>
+<td style="text-align: right;">7967.50</td>
+<td style="text-align: left;">Masc</td>
+<td style="text-align: left;">São Paulo</td>
+<td style="text-align: left;">A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Agora sabemos como os dados estão organizados. Mas qual é a estrutura deles? Podemos descobrir isso com <code>glimpse</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% dplyr::glimpse()</code></pre>
+<pre><code>
+Observations: 242
+Variables: 4
+$ renda  &lt;dbl&gt; 5387.30, 6783.15, 607.58, 8855.77, 9913.23, 6656.25,…
+$ sexo   &lt;fct&gt; Masc, Masc, Fem, Masc, Masc, Fem, Masc, Fem, Fem, Ma…
+$ cidade &lt;fct&gt; Sao paulo, São Paulo, sao paulo, sao paulo, campinas…
+$ classe &lt;chr&gt; &quot;B&quot;, &quot;B&quot;, &quot;D&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;D…</code></pre>
+</div>
+<p>Temos então um total de 237 linhas e 4 colunas. Além disso, sabemos quais são os tipos das colunas: <code>double/numeric</code>, <code>factor</code> e <code>character</code>. Lembrando que o tipo <code>factor</code> é ideal para quando temos variáveis de classes, podemos notar que a coluna “classe” deve ser alterada, deixando de ser um <code>character</code>, uma vez que não queremos tratá-la como texto:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados &lt;- dados %&gt;% 
+  dplyr::mutate_if(is.character, funs(as.factor))
+
+dados %&gt;% dplyr::glimpse()</code></pre>
+<pre><code>
+Observations: 242
+Variables: 4
+$ renda  &lt;dbl&gt; 5387.30, 6783.15, 607.58, 8855.77, 9913.23, 6656.25,…
+$ sexo   &lt;fct&gt; Masc, Masc, Fem, Masc, Masc, Fem, Masc, Fem, Fem, Ma…
+$ cidade &lt;fct&gt; Sao paulo, São Paulo, sao paulo, sao paulo, campinas…
+$ classe &lt;fct&gt; B, B, D, A, A, B, C, A, A, B, D, A, A, A, A, D, A, D…</code></pre>
+</div>
+<p>Note que usamos a função <code>mutate_if</code>, que transforma uma variável caso ela cumpra um certo requisito. Ou seja, o que fizemos foi: <code>se</code> a variável é <code>character</code>, transforme em <code>factor</code>. Esta função aplica é aplicada a todas as colunas dos dados, o que pode ser muito útil quando temos várias colunas para transformar.</p>
+A função <code>summary</code> mostra o resumo estatístico dos dados:
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% summary()</code></pre>
+<pre><code>
+     renda         sexo           cidade   classe
+ Min.   :  100   Fem :125   campinas :29   A:61  
+ 1st Qu.: 2648   Masc:117   osasco   :42   B:60  
+ Median : 5197              s. paulo :42   C:60  
+ Mean   : 7641              sao paulo:40   D:61  
+ 3rd Qu.: 7745              Sao paulo:47         
+ Max.   :99299              São Paulo:42         </code></pre>
+</div>
+<p>*Bônus: a função <code>skim</code> do pacote <code>skimr</code> tambeeém apresenta um resumo dos dados com adição d ehistogramas para o caso de variáveis contínuas :)</p>
+<p>A variável renda apresenta um comportamento estranho: seu máximo está muito longe da média, mediana e até do terceiro quartil. Esse comportamento definitivamente exige uma atencão extra, que será discutida na parte sobre a remoção de outliers.</p>
+<h1 id="inspecao-atraves-de-graficos">Inspeção através de gráficos</h1>
+<p>Suponha que antes de tudo você precisa verificar algumas hipóteses, como:</p>
+<ul>
+<li>A distribuição de renda de homens e mulheres na amostra é igual?</li>
+<li>A distribuição de renda por classes na amostra é diferente?</li>
+</ul>
+<p>Estas verificações podem ser facilmente realizadas através de inspeção gráfica:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% 
+  ggplot(aes(renda)) +
+  geom_histogram(fill = &#39;#88398A&#39;, colour = &#39;grey80&#39;,
+                 bins = 30) +
+  facet_wrap(~sexo, scales = &#39;free&#39;) +
+  theme_bw() +
+  labs(x = &#39;Renda&#39;, y = &#39;Contagem de pessoas&#39;, 
+       main = &#39;Distribuição da renda por homens e mulheres&#39;)</code></pre>
+<p><img src="inspecao-dados_files/figure-html5/unnamed-chunk-10-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% 
+  ggplot(aes(renda)) +
+  geom_histogram(fill = &#39;#88398A&#39;, colour = &#39;grey80&#39;,
+                 bins = 20) +
+  facet_wrap(~classe) +
+  theme_bw() +
+  labs(x = &#39;Renda&#39;, y = &#39;Contagem de pessoas&#39;, 
+       main = &#39;Distribuição da renda por classes&#39;)</code></pre>
+<p><img src="inspecao-dados_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<p>A primeira vista as duas hipóteses parecem proceder: homens e mulheres têm a distribuição bem parecidas. As diferenças entre as rendas ficam muito claras quando separamos os graaaáficos pelas classes, o que justificaria a presença dos <em>outliers</em>.</p>
+<h1 id="outliers---valores-que-nao-representam-a-amostra">Outliers - valores que não representam a amostra</h1>
+<h2 id="identificacao">Identificação</h2>
+<p>Para a identificação de outliers, uma função muito útil é a <code>quantile</code>, que mostra cada quantil de uma variável. Assim, podemos utilizá-la para encontrar exatamente “aonde” começam os <em>outliers</em>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Vendo os quantis mais &quot;comuns&quot;
+dados %&gt;% with(quantile(renda))</code></pre>
+<pre><code>
+       0%       25%       50%       75%      100% 
+  100.000  2648.475  5196.960  7745.435 99299.270 </code></pre>
+<pre class="r"><code>
+# Vendo os quantis específicos
+dados %&gt;% with(quantile(renda, seq(0.9, 1, by = 0.005)))</code></pre>
+<pre><code>
+      90%     90.5%       91%     91.5%       92%     92.5%       93% 
+ 9274.520  9325.492  9376.463  9427.434  9478.399  9529.368  9580.339 
+    93.5%       94%     94.5%       95%     95.5%       96%     96.5% 
+ 9631.310  9682.282  9733.246  9784.215  9835.186  9886.158  9937.130 
+      97%     97.5%       98%     98.5%       99%     99.5%      100% 
+ 9988.101 87999.946 91828.858 93696.460 95564.059 97431.665 99299.270 </code></pre>
+</div>
+<p>Percebe-se que existe uma mudança brusca nos valores dos quantis finais, aonde o valor é quase 10 vezes maior que o anterior. Assim, encontramos um ponto ideal para começar o corte destes valores extremos.</p>
+<h2 id="remocao">Remoção</h2>
+<p>A remoção de outliers é feita com o <code>filter</code>, de forma muito rápida e intuitiva:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados  &lt;- dados %&gt;% 
+  dplyr::filter(renda &lt; quantile(renda, 0.97))</code></pre>
+</div>
+<h1 id="erros-em-strings">Erros em <code>strings</code></h1>
+<p>Na maior parte das vezes, não há um algoritmo automático que resolva nossos problemas com as <code>strings</code>: é preciso corrigi-las à mão. Todavia, devemos lembrar que estes erros surgem por meio de fatores externos, como a digitação incorreta, erros em sistemas, e assim por diante. É sempre bom estar atento às possibilidades de aplicar medidas que ajudem a evitar a existência dos erros.</p>
+<p>Um pouco mais sobre <code>strings</code> pode ser encontrado <a href="https://github.com/analuspi/MeetUp-Strings">nesse repositório da Ana</a>. Aqui, o que eu vou fazer são operações simples para buscar padronizar a coluna de texto de interesse, que é a cidade.</p>
+<p>Primeiro, vamos verificar como estão os textos e pensar numa boa forma de corrígi-los:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dados %&gt;% distinct(cidade)</code></pre>
+<pre><code>
+     cidade
+1 Sao paulo
+2 São Paulo
+3 sao paulo
+4  campinas
+5  s. paulo
+6    osasco</code></pre>
+</div>
+<p>Ou seja, as cidades Campinas e Osasco estão escritas de forma correta, mas São Paulo tem várias versões. Um bom critério para corrigir é usar a palavra “paulo” que é comum em todas estas versões:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Passo 1: passando tudo para minúsculo (lower case)
+dados &lt;- dados %&gt;%
+  mutate(cidade = str_to_lower(cidade))
+
+# Passo 2: substituindo os textos de acordo com um critério:
+# se o texto contém &quot;paulo&quot;, substituir tudo por &quot;são paulo&quot; 
+# e deixando somente as primeiras letras maiúsculas
+
+dados &lt;- dados %&gt;%
+  mutate(cidade = ifelse(str_detect(cidade, &quot;paulo&quot;), &quot;são paulo&quot;, cidade)) %&gt;% 
+  mutate(cidade = str_to_title(cidade))
+
+dados %&gt;% distinct(cidade)</code></pre>
+<pre><code>
+     cidade
+1 São Paulo
+2  Campinas
+3    Osasco</code></pre>
+</div>
+<p>Agora temos os nomes das cidades corrigidos. Essa solução não é geral, cada caso será algo diferente, mas ajuda a ter uma ideia sobre como proceder. Uma outra opção é usar a função <code>case_when</code> para substituir casos mais especifícos.</p>
+<p>Por enquanto é isso :) logo teremos mais assuntos sendo discutidos aqui nesse blog!</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

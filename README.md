@@ -6,7 +6,7 @@ Este repositório contém o blog das R-Ladies da América Latina (Latin America)
 
 **Este repositorio contiene el blog de las R-Ladies de América Latina (Latin America). Los capítulos actuales son:**
 
-*This repository contains the Latin America (LaTam) R-Ladies blog. The current chapters are:*
+*This repository contains the Latin America (LatAm) R-Ladies blog. The current chapters are:*
 
   - [São Paulo, Brasil](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - [Curitiba, Brasil](https://www.meetup.com/pt-BR/rladies-curitiba)
@@ -45,5 +45,7 @@ Um mapa interativo sobre os atuais capítulos pode ser encontrado em: https://gq
 
 
 Guia de contribuição:
+
 **Guía de contribución:**
+
 *Contribution guide:*

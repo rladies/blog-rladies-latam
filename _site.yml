@@ -6,19 +6,22 @@ output_dir: "docs"
 collections:
   posts:
     share: [twitter, linkedin]
+base_url: https://r-ladies-latam.rbind.io
 navbar:
   logo:
     image: img/logo.png
     href: https://rladies.org/
   right:
-    - text: "Posts"
+    - text: "Posts"	
       menu:
         - text: "Tutoriais"
-          href: tutoriais.html
+          href: index.html
         - text: "Análises"
           href: analises.html
     - text: "Sobre"
       href: about.html
+    - text: "Projetos"
+      href: projetos.html
 output:
   radix::radix_article:
     css: styles.css

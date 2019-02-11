@@ -6,7 +6,7 @@ output_dir: "docs"
 collections:
   posts:
     share: [twitter, linkedin]
-base_url: https://r-ladies-latam.rbind.io
+base_url: https://rladieslatam.rbind.io
 navbar:
   logo:
     image: img/logo.png

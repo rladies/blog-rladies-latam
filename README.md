@@ -1,12 +1,12 @@
 <img src="https://github.com/rladies/starter-kit/blob/master/logo/R-LadiesGlobal_RBG_online_LogoWithText_Horizontal.png" data-canonical-src="https://github.com/rladies/starter-kit/blob/master/logo/R-LadiesGlobal_RBG_online_LogoWithText_Horizontal.png" width="300" height="100" />
 
 
-Este repositório contém o blog das R-Ladies da América Latina (Latin America). Os capítulos atuais são:
+Este repositório contém o blog das RLadies+ da América Latina (Latin America). Os capítulos atuais são:
 
 
-**Este repositorio contiene el blog de las R-Ladies de América Latina (Latin America). Los capítulos actuales son:**
+**Este repositorio contiene el blog de las RLadies+ de América Latina (Latin America). Los capítulos actuales son:**
 
-*This repository contains the Latin America (LatAm) R-Ladies blog. The current chapters are:*
+*This repository contains the Latin America (LatAm) RLadies+ blog. The current chapters are:*
 
   - [São Paulo, Brasil](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - [Curitiba, Brasil](https://www.meetup.com/pt-BR/rladies-curitiba)
